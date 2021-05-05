@@ -17,31 +17,32 @@ enter_btn.on("click", runEnter);
 //start function 
 
 function runEnter() {
+    var filter_table = tableData
 
     // Prevent the page from refreshing
     d3.event.preventDefault();
 
     // Select the input element and get the raw HTML node
-    var inputElement = d3.select("#datetime");
-    //console.log(inputElement);
+    var dateValue = d3.select("#datetime").property("value");
+    var cityValue = d3.select("#city").property("value");
 
-    // Get the value property of the input element
-    var inputValue = inputElement.property("value");
 
-    console.log(inputValue);
-    //console.log(tableData);
-
-    //create a filtered array that contained the UFO sighting on the date the user entered 
-    var filter_table = tableData
-    if (inputValue != "") {
-        filter_table = filter_table.filter(function (date) {
-            if (date.datetime === inputValue) {
+    //filter for date 
+    if (dateValue != "") {
+        filter_table = filter_table.filter(function (sightings) {
+            if (sightings.datetime === dateValue) {
                 return true;
             }
             else {
                 return false;
             }
         })
+        console.log(filter_table);
+    };
+    /// filter for city 
+    if (cityValue != "") {
+        filter_table = filter_table.filter(sightings => sightings.city === cityValue); 
+
         console.log(filter_table);
     };
 
