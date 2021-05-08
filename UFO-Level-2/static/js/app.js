@@ -25,6 +25,9 @@ function runEnter() {
     // Select the input element and get the raw HTML node
     var dateValue = d3.select("#datetime").property("value");
     var cityValue = d3.select("#city").property("value");
+    var stateValue = d3.select("#state").property("value");
+    var countryValue = d3.select("#country").property("value");
+    var shapeValue =   d3.select("#shape").property("value");
 
 
     //filter for date 
@@ -42,6 +45,27 @@ function runEnter() {
     /// filter for city 
     if (cityValue != "") {
         filter_table = filter_table.filter(sightings => sightings.city === cityValue); 
+
+        console.log(filter_table);
+    };
+
+     /// filter for state 
+     if (stateValue != "") {
+        filter_table = filter_table.filter(sightings => sightings.state === stateValue); 
+
+        console.log(filter_table);
+    };
+
+    /// filter for country 
+    if (countryValue != "") {
+        filter_table = filter_table.filter(sightings => sightings.country === countryValue); 
+
+        console.log(filter_table);
+    };
+
+    /// filter for shape 
+    if (shapeValue != "") {
+        filter_table = filter_table.filter(sightings => sightings.shape === shapeValue); 
 
         console.log(filter_table);
     };
